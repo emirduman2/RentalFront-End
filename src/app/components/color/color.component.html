@@ -1,4 +1,6 @@
 <ul class = "list-group">
-  <li *ngFor = "let color of colors" 
-  class = "list-group-item">{{color.colorName}}</li>
+  <li (click)="setCurrentColor(color)" *ngFor = "let color of colors" 
+  [class] = "getCurrentColorClass(color)">{{color.colorName}}</li>
+
+  <h5 *ngIf = "currentColor">{{currentColor.colorName}} seçtiniz</h5>
 </ul>

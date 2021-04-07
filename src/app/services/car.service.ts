@@ -9,10 +9,31 @@ import { ListResponseModel } from '../models/ListResponseModel';
 })
 export class CarService {
 
-  apiUrl = 'https://localhost:5001/api/cars/getcardetails';
+  apiUrl = 'https://localhost:5001/api/';
   constructor(private httpClient : HttpClient) { }
 
-  getCars(): Observable<ListResponseModel<Car>>{
-    return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl);
+  getCars(): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getcardetails';
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCarById(carId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getbyid?id=' + carId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getbybrand?brandId=' + brandId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCarsByColor(colorId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getbycolorid?colorId=' + colorId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCarsByBrandAndColor(brandId:number,colorId:number):Observable<ListResponseModel<Car>>{
+    let newPath = this.apiUrl + 'cars/getbycolorandbrand?brandId=' + brandId + '&colorId=' + colorId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 }
