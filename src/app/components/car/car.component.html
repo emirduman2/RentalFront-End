@@ -20,16 +20,19 @@
     <th>Vat Added Price</th>
     <th>ModelYear</th>
     <th>Description</th>
+    <th></th>
   </thead>
 
-  <tr *ngFor="let car of cars"  routerLink="/cars/car/{{car.id}}" >
-    <td>{{ car.carId }}</td>
-    <td>{{ car.carName |uppercase}}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.dailyPrice | currency }}</td>
-    <td>{{ car.dailyPrice | vatAdded:10 | currency}}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.description }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let car of cars | filterPipe:filterText"  routerLink="/cars/car/{{car.id}}" >
+      <td>{{ car.carId }}</td>
+      <td>{{ car.carName |uppercase}}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.dailyPrice | currency }}</td>
+      <td>{{ car.dailyPrice | vatAdded:10 | currency}}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.description }}</td>
+      <td><button (click)="addToCart(car)" type = "button" class = "btn btn-success">Kirala</button></td>
+  </tbody>
 </table>
