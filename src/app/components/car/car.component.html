@@ -22,10 +22,8 @@
     <th>Description</th>
     <th></th>
   </thead>
-
   <tbody>
-    <tr *ngFor="let car of cars | filterPipe:filterText"  routerLink="/cars/car/{{car.id}}" >
-      <td>{{ car.carId }}</td>
+    <tr *ngFor="let car of cars | filterPipe:filterText">
       <td>{{ car.carName |uppercase}}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.brandName }}</td>
@@ -34,5 +32,6 @@
       <td>{{ car.modelYear }}</td>
       <td>{{ car.description }}</td>
       <td><button (click)="addToCart(car)" type = "button" class = "btn btn-success">Kirala</button></td>
+      <td><button routerLink="/cars/car/{{car.id}}" type = "button" class = "btn btn-success">Detaylar</button></td>
   </tbody>
 </table>

@@ -12,7 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CarComponent implements OnInit {
 
-  cars:Car[]=[];//sunu da carDto  dan cek bunu cekince yapin bozulacak html kisminda colodId yerini colorName yap id ler gelmesin isimler gelsin diye bu
+  cars:Car[] = []
   dataLoaded = false;
   filterText = "";
 
