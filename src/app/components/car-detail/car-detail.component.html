@@ -1,0 +1,21 @@
+<div *ngIf="!dataLoaded" class="spinner-border text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div *ngIf="dataLoaded" class="card" style="width: 18rem">
+    <img
+      *ngFor="let carImage of car.imagePaths"
+      src="https://localhost:5001/{{ carImage.imagePath }}"
+      class="card-img-top"
+      alt="{{ car.carName }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Açıklaması : {{ car.carName }}</h5>
+      <h5 class="card-title">Markası : {{ car.brandName }}</h5>
+      <h5 class="card-title">Rengi : {{ car.colorName }}</h5>
+      <h5 class="card-title">Günlük Ücreti : {{ car.dailyPrice }}</h5>
+      <h5 class="card-title">Modeli : {{ car.modelYear }}</h5>
+      <p class="card-text"></p>
+      <a routerLink="/car-rental/{{ car.id }}" class="btn btn-success">Kirala</a>
+    </div>
+  </div>

@@ -10,19 +10,24 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
 
-  cars:Car[]=[];
+  cars:Car[]=[];//sunu da carDto  dan cek bunu cekince yapin bozulacak html kisminda colodId yerini colorName yap id ler gelmesin isimler gelsin diye bu
   dataLoaded = false;
+  filterText = "";
 
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
-      if(params["brandId"])
+      if(params["brandId"]){
         this.getCarsByBrand(params["brandId"]);
-      else if(params["colorId"])
+      }
+      else if(params["colorId"]){
         this.getCarsByColor(params["colorId"])
-      else
+      }
+      else{
         this.getCars();
+      }
+      console.log(this.cars);
     })
   }
 
@@ -34,15 +39,15 @@ export class CarComponent implements OnInit {
   }
 
   getCarsByBrand(brandId:number){
-     this.carService.getCarsByBrand(brandId).subscribe(reponse=>{
-      this.cars = reponse.data;
+     this.carService.getCarsByBrand(brandId).subscribe(response=>{
+      this.cars = response.data
       this.dataLoaded = true;
     })
   }
 
   getCarsByColor(colorId:number){
       this.carService.getCarsByColor(colorId).subscribe(response =>{
-      this.cars = response.data;
+      this.cars = response.data
       this.dataLoaded=true;
     })
   }
