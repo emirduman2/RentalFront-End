@@ -30,7 +30,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let car of cars | filterPipe: filterText">
-      <td>{{ car.CarId }}</td>
+      <td>{{ car.carId }}</td>
       <td>{{ car.carName | uppercase }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.brandName }}</td>
@@ -45,7 +45,7 @@
       </td>
       <td>
         <button
-          routerLink="/cars/{{car.CarId}}" 
+          routerLink="/cars/{{car.carId}}" 
           type="button"
           class="btn btn-success"
         >
